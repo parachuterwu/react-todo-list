@@ -18,15 +18,22 @@ class Create extends PureComponent {
 
     handleKeyDown(event) {
         let {val} = this.state;
+        let {addData} = this.props;
 
         if (event.key === 'Enter') {
-            console.log('23333')
+            if (!val.trim()) {
+                alert('请输入内容');
+                return;
+            }
+
+            addData(val);
+            this.setState({
+                val: ''
+            });
         }
     }
 
     render() {
-        let {addData} = this.props;
-
         return (
             <div id="create-todo">
                 <input

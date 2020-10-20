@@ -44,8 +44,19 @@ class App extends PureComponent {
         }
     }
 
+    // 添加数据
     addData(txt) {
+        let { data } = this.state;
 
+        data.unshift({
+            id: Date.now(),
+            txt,
+            done: false
+        });
+
+        this.setState({
+            data: [...data]
+        });
     }
 
     render() {
@@ -58,7 +69,6 @@ class App extends PureComponent {
                     <Create addData={this.addData} />  
                 </div>
             </div>
-
         );
     }
 }
