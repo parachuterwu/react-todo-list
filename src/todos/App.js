@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
-import Title from './title';
-import Create from './create';
+import Title from './components/Title';
+import Create from './components/Create';
+import TodoList from './components/TodoList';
 
 import './index.css';
 /*
@@ -32,13 +33,24 @@ import './index.css';
 class App extends PureComponent {
     constructor(props) {
         super(props);
+        this.addData = this.addData.bind(this);
 
         this.state = {
-            data: [
+            data:[
                 {
-                    id: 0,
-                    txt: '数据内容',
-                    done: false
+                  id: 0,
+                  txt: "数据内容",
+                  done: false
+                },
+                {
+                  id: 1,
+                  txt: "数据内容2",
+                  done: false
+                },
+                {
+                  id: 2,
+                  txt: "数据内容3",
+                  done: false
                 }
             ]
         }
@@ -66,7 +78,12 @@ class App extends PureComponent {
             <div id="dodoapp">
                 <Title />
                 <div className="content">
-                    <Create addData={this.addData} />  
+                    <Create addData={this.addData} />
+                    {data.length > 0 && 
+                        <TodoList
+                            data={data}
+                        />
+                    }
                 </div>
             </div>
         );

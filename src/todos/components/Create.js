@@ -4,10 +4,10 @@ class Create extends PureComponent {
     constructor(props) {
         super(props);
 
-        this.state = {val: ''};
-
         this.handleChange = this.handleChange.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
+
+        this.state = { val: '' };
     }
 
     handleChange(event) {
@@ -17,8 +17,8 @@ class Create extends PureComponent {
     }
 
     handleKeyDown(event) {
-        let {val} = this.state;
-        let {addData} = this.props;
+        let { val } = this.state;
+        let { addData } = this.props;
 
         if (event.key === 'Enter') {
             if (!val.trim()) {
