@@ -8,14 +8,16 @@ class Todos extends PureComponent {
     }
 
     render() {
-        const { data } = this.props;
+        const { data, editTxt } = this.props;
+        console.log(this.props)
 
         return (
             <ul id="todo-list">
-                {data.map(item => 
+                {data.map(item =>
                     <ListItem
                         key={item.id}
-                        data={item}
+                        itemData={item}
+                        editTxt={editTxt}
                     />
                 )}           
             </ul>
