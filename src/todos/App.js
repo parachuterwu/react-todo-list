@@ -74,7 +74,7 @@ class App extends PureComponent {
 
     // 修改事项信息
     editTxt(id, txt) {
-        const { data } = this.state;
+        let { data } = this.state;
 
         // data.find(item => item.id === id).txt = txt;
         data.forEach(item => {
