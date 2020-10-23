@@ -8,16 +8,30 @@ class ListItem extends PureComponent {
         this.setValue = this.setValue.bind(this);
         this.editItem =  this.editItem.bind(this);
 
+        this.textInput = createRef();
+
         this.state = {
             editing: false,
             val: ''
         }
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        // 组件更新完成之后，判断是否需要给 input 获得焦点
+        if (this.state.editing && !prevState.editing) {
+            this.textInput.current.select();
+        }
+    }
+
     setEditing() {
+        const { txt } = this.props.itemData;
+
         this.setState({
-            editing: true
+            editing: true,
+            val: txt
         });
+
+        this.textInput.current.select();
     }
 
     setValue(event) {
@@ -63,13 +77,12 @@ class ListItem extends PureComponent {
                         <span
                             className="todo-destroy"
                             // onClick={this.removeItem(id)}
-                        >
-
-                        </span>
+                        ></span>
                     </div>
 
                     <div className="edit">
                         <input
+                            ref={this.textInput}
                             className="todo-input"
                             type="text"
                             value={val}
