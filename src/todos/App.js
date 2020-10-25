@@ -35,6 +35,7 @@ class App extends PureComponent {
 
         this.addData = this.addData.bind(this);
         this.editTxt = this.editTxt.bind(this);
+        this.changeDone = this.changeDone.bind(this);
 
         this.state = {
             data:[
@@ -87,7 +88,23 @@ class App extends PureComponent {
         })
     }
 
+    // 修改完成状态
+    changeDone(id, done) {
+        let { data } = this.state;
+
+        data.forEach(item => {
+            if (item.id === id) {
+                item.done = done;
+            }
+        });
+
+        this.setState({
+            data:data.map(item=>({...item}))
+        })
+    }
+
     render() {
+        console.log(this.props)
         let { data } = this.state;
 
         return (
@@ -99,6 +116,7 @@ class App extends PureComponent {
                         <TodoList
                             data={data}
                             editTxt={this.editTxt}
+                            changeDone={this.changeDone}
                         />
                     }
                 </div>

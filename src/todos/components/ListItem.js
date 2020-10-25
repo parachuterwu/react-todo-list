@@ -7,6 +7,7 @@ class ListItem extends PureComponent {
         this.setEditing = this.setEditing.bind(this);
         this.setValue = this.setValue.bind(this);
         this.editItem =  this.editItem.bind(this);
+        this.setDone = this.setDone.bind(this);
 
         this.textInput = createRef();
 
@@ -54,6 +55,13 @@ class ListItem extends PureComponent {
         }
     }
 
+    setDone(event) {
+        const { id } = this.props.itemData;
+        const { changeDone } =this.props;
+      
+        changeDone(id, event.target.checked);
+    }
+
     render() {
         console.log(this.props)
         const { itemData } = this.props;
@@ -67,6 +75,8 @@ class ListItem extends PureComponent {
                         <input
                             className="check"
                             type="checkbox"
+                            checked={done}
+                            onChange={this.setDone}
                         />
                         <div 
                             className="todo-content"

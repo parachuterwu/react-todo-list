@@ -8,7 +8,7 @@ class Todos extends PureComponent {
     }
 
     render() {
-        const { data, editTxt } = this.props;
+        const { data, editTxt, changeDone } = this.props;
         console.log(this.props)
 
         return (
@@ -18,6 +18,7 @@ class Todos extends PureComponent {
                         key={item.id}
                         itemData={item}
                         editTxt={editTxt}
+                        changeDone={changeDone}
                     />
                 )}           
             </ul>
