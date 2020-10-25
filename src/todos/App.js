@@ -91,11 +91,11 @@ class App extends PureComponent {
         let { data } = this.state;
 
         return (
-            <div id="dodoapp">
+            <div id="todoapp">
                 <Title />
                 <div className="content">
                     <Create addData={this.addData} />
-                    {data.length > 0 && 
+                    {data.length > 0 &&
                         <TodoList
                             data={data}
                             editTxt={this.editTxt}
